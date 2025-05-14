@@ -1,0 +1,34 @@
+*{
+    padding-top: 10;
+    padding: 30px;
+}
+.nes-container.with-title.is.centered{
+    margin: auto;
+    width: 60%;
+}
+.btn{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 100%;
+    padding: 10px;
+
+}
+.nes-btn.is-primary
+{
+flex: 1 1 auto;
+min-width: 100px;
+margin: 5px;
+}
+.container .card-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
+    gap: 15px;
+}
+dialog.nes-dialog{
+    
+    overflow-y: auto;
+}
+body{
+    padding-top: 150px;
+}
