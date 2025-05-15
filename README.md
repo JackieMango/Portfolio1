@@ -1,2 +1,2 @@
 # Portfolio
-- A personal portfolio website showcasinf my project, skills, and resume. Built with HTML, CSS, JavaScript.
+- A personal portfolio website showcasing my project, skills, and resume. Built with HTML, CSS, JavaScript.
