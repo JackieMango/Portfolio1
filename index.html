@@ -4,7 +4,9 @@
  
   
     <link rel = "stylesheet" href="style.css">
-    <script src="close.js" defer></script>
+    <!--<script src="close.js" defer></script>-->
+    <script type="module" src="models.js"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
     <meta charset="UTF-8">
@@ -12,123 +14,9 @@
     <title>Portfolio</title>
 </head>
 <body>
-    <div id="mainCont" class="nes-container with-title is centered">
-        <p class="title"> Home</p>
-        <p>HI, I'M JAQUELINE</p>
-        <div class="btn">
-        <section>
-            <button id="btnOpen" type="button" class="nes-btn is-primary" onclick="document.getElementById('dialog-default').showModal();">
-              About Me
-            </button>
-            <dialog class="nes-dialog" id="dialog-default">
-              <form method="dialog">
-                <p class="title">Intro</p>
-                <p> I am a recent graduate with a Bachelor's degree in Computer Science,
-                    bringing strong foundational knowledge in programming languages
-                    such as Java, C/C++, and Python. During my academic journey, I gained hands-on
-                    experience in areas like software engineering, 3D graphics, and Computer Networks.
-                    More recently, my interest have expanded toward web developement, cybersecurity, and 3D graphics. 
-                    I am actively seeking opportunites to grow and apply my skills in professional enviroments. </p>
-                <menu class="dialog-menu">
-                  <button id="closeBtn" class="nes-btn is-primary">Close</button>
-                </menu>
-              </form>
-            </dialog>
-          </section>
-          <section>
-            <button id="btnOpen1" type="button" class="nes-btn is-primary" onclick="document.getElementById('dialog-default1').showModal();">
-              Background
-            </button>
-            <dialog class="nes-dialog" id="dialog-default1">
-              <form method="dialog">
-                <p class="title">Background/Work</p>
-                <h1>Education</h1>
-                <li>2025 - Bachelor of Science (BS) in Computer Science</li>
-                <li>2022 - Associate of Arts (AA)</li>
-                <h1>Work</h1>
-                <h4>Production Service Technician (2023-2025)</h4>
-                <li>Set up and maintained basic audio and electronic 
-                equipment for live events and productions</li>
-                <li>Assisted with configuring sound systems, microphones, and
-                video displays</li>
-                <li>Troubleshot and resolved minor technical issues during events</li>
-                <li>Collaborated with team members to ensure smooth setup and takedown processes</li>
-                <li>Ensured equipment was properly stored, transported, and maintained</li>
-                <h1>Technical Skills</h1>
-                <li>Java, C/C++, Python</li>
-                <li>Git</li>
-                <li>HTML, CSS, JavaScript</li>
-                <li>Languages: English/Spanish</li>
-                <h1>Interest</h1>
-                <li>Art</li>
-                <li>3D Graphics</li>
-                <li>Crochet</li>
-                <li>Games</li>
-                <li>Languages</li>
-                
-                <menu class="dialog-menu">
-                  <button id="closeBtn1" class="nes-btn is-primary">Close</button>
-                </menu>
-              </form>
-            </dialog>
-          </section><section>
-            <button id="btnOpen2" type="button" class="nes-btn is-primary" onclick="document.getElementById('dialog-default2').showModal();">
-              Projects
-            </button>
-            <dialog class="nes-dialog" id="dialog-default2">
-              <form method="dialog">
-                <h1 class="title">Projects</h1>
-                <div id = "nav-p"></div>
 
-                <div class = "container">  
-                 
-                 <div class="card-container">
-             
-                     <div id="card1" class="nes-container with-title">
-                     <p class = "title">Text Art</p>
-                         <li>Languages: C/C++</li>
-                         <li>A program that allows display and 
-                             editing of text art(ASCII art).</li>
-                     <a href="https://github.com/JackieMango/TextArt" class = "nes-btn is-primary">Read More</a>
-                 </div>
-                     
-                 
-                 <div id="card2" class="nes-container with-title">
-                     <p class = "title">WWWP</p>
-                     <li>Languages: HTML, CSS, JavaScript</li>
-                     <li>World Wide Web Pastures is a web-based farming sim app where players raise animals, 
-                         partake in competitions, and grow/buy/sell crops.</li>
-                     <a href="" class = "nes-btn is-primary">Read More</a>
-                 </div>
-                         
-                 <div id="card3" class="nes-container with-title">
-                  <p class = "title">Portfolio</p>
-                      <li>Languages: HTML, CSS, JavaScript</li>
-                      <li>My portfolio demonstrates a compilation 
-                          of my academic works, skills, background, and interest.</li>
-                  <a href="https://github.com/JackieMango/Portfolio1" class = "nes-btn is-primary">Read More</a>
-              </div>      
-               
-             <div id="card4" class="nes-container with-title">
-              <p class = "title">Grashka</p>
-                  <li>Languages: C#</li>
-                  <li>Game built using Unity</li>
-                  <li>Coming Soon....</li>
-          </div>   
-          <div id="card5" class="nes-container with-title">
-            <p class = "title">Deep Dungeon Diving</p>
-                <li>Languages: C#</li>
-                <li>Game built using Unity</li>
-                <li>Coming Soon....</li>
-        </div>  </div>  
-                <menu class="dialog-menu">
-                  <button id="closeBtn" class="nes-btn is-primary">Close</button>
-                </menu>
-              </form>
-            </dialog>
-          </section>
-        </div>
-    </div>
+  <!--Container for 3d objects-->
+  <div id="container3D"></div>
 
    
 </body>
