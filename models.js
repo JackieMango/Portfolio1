@@ -90,10 +90,18 @@ function animate() {
   requestAnimationFrame(animate);
     // postitions and rotations changes for each object
     const delta = clock.getDelta();
+    
+    // wrapped inside if to make sure its loaded before animated
+    if(object)
+    {
     object.position.x=3;
+
     object.rotation.x += delta;
     object.rotation.y += delta;
-      
+    }
+    
+    if(object2)
+    {
     object2.position.z=2;
     object2.position.y=2;
 
@@ -101,13 +109,21 @@ function animate() {
     object2.rotation.x -= delta;
     object2.rotation.y += delta;
 
+    }
+    if(object3)
+    {
     object3.position.set(0,0,-6);
     object3.rotation.y=5;
+    }
+    if(object4)
+    {
+      object4.position.set(2.2,2);
+      object4.scale.set(.5,.5,.5);
 
-    object4.position.set(2.2,2);
-        object4.scale.set(.5,.5,.5);
+      object4.rotation.x -= delta;
+    }
 
-    object4.rotation.x -= delta;
+  
     
 
   renderer.render(scene, camera);
