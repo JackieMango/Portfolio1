@@ -3,19 +3,28 @@ import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module
 //.gltf file import
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 
+
 //Create a Three.JS Scene
 const scene = new THREE.Scene();
+
 //create a new camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 //create clock for movement
 const clock = new THREE.Clock();
 
-//3D object global variables
+
+//3D objectS, global variables
 let object;
 let object2;
 let object3;
 let object4;
+let object5;
+let object6;
+let object7;
+let object8;
+let object9;
+let object10;
 
 //object rendering
 let objToRender = 'star';
@@ -29,6 +38,7 @@ loader.load(
   function (gltf) {
     //file loaded, add it to the scene
     object = gltf.scene;
+
     scene.add(object);
   },
   function (xhr) {
@@ -46,6 +56,7 @@ loader.load(
   function (gltf) {
     //file loaded, add it to the scene
     object2 = gltf.scene;
+    //object2.layers.set(2);
     scene.add(object2);
   }
 );
@@ -55,7 +66,74 @@ loader.load(
   function (gltf) {
     //file loaded, add it to the scene
     object4 = gltf.scene;
+    //object4.layers.set(2);
+
     scene.add(object4);
+  }
+);
+// fourth star
+loader.load(
+  `./models/${objToRender}/star.gltf`,
+  function (gltf) {
+    //file loaded, add it to the scene
+    object5 = gltf.scene;
+       // object5.layers.set(2);
+
+    scene.add(object5);
+  }
+);
+// fifth star
+loader.load(
+  `./models/${objToRender}/star.gltf`,
+  function (gltf) {
+    //file loaded, add it to the scene
+    object6 = gltf.scene;
+   // object6.layers.set(2);
+
+    scene.add(object6);
+  }
+);
+// sixth star
+loader.load(
+  `./models/${objToRender}/star.gltf`,
+  function (gltf) {
+    //file loaded, add it to the scene
+    object7 = gltf.scene;
+    //object7.layers.set(2);
+
+    scene.add(object7);
+  }
+  // senventh star
+);loader.load(
+  `./models/${objToRender}/star.gltf`,
+  function (gltf) {
+    //file loaded, add it to the scene
+    object8 = gltf.scene;
+       // object8.layers.set(2);
+
+    scene.add(object8);
+  }
+);
+// eigth star
+loader.load(
+  `./models/${objToRender}/star.gltf`,
+  function (gltf) {
+    //file loaded, add it to the scene
+    object9 = gltf.scene;
+    //object9.layers.set(2);
+
+    scene.add(object9);
+  }
+);
+// ninth star
+loader.load(
+  `./models/${objToRender}/star.gltf`,
+  function (gltf) {
+    //file loaded, add it to the scene
+    object10 = gltf.scene;
+      //  object10.layers.set(2);
+
+    scene.add(object10);
   }
 );
 
@@ -65,9 +143,13 @@ loader.load(
   function (gltf) {
     //file loaded, add it to the scene
     object3 = gltf.scene;
+    //object3.layers.set(1);
     scene.add(object3);
   }
 );
+
+
+
 
 //new renderer and set its size
 const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -122,9 +204,46 @@ function animate() {
 
       object4.rotation.x -= delta;
     }
+    if(object5)
+    {
+      object5.position.set(-4,0,1);
+      object5.rotation.x -= delta;
 
+    }if(object6)
+    {
+      object6.position.set(-5,2,1);
+      object6.rotation.x += delta;
+      object6.scale.set(.5,.5,.5);
+
+    }
   
-    
+    if(object7)
+    {
+      object7.position.set(-3,-1,3);
+      object7.rotation.x += delta;
+      object7.scale.set(.2,.2,.2);
+
+    }
+if(object8)
+    {
+      object8.position.set(-1,-1,3);
+      object8.rotation.x -= delta;
+      object8.scale.set(.2,.2,.2);
+
+    }
+if(object9)
+    {
+      object9.position.set(4,-2,2);
+      object9.rotation.x -= delta;
+
+    }
+if(object10)
+    {
+      object10.position.set(3,1,3);
+      object10.rotation.x -= delta;
+
+    }
+
 
   renderer.render(scene, camera);
 }
@@ -138,3 +257,33 @@ window.addEventListener("resize", function () {
 
 //Starts rendering
 animate();
+
+// raycaster for click event
+const raycaster = new THREE.Raycaster();
+
+document.addEventListener('mousedown', onMouseDown);
+
+// what point mouse is raycast
+function onMouseDown(event){
+
+  const coords = new THREE.Vector2(
+    (event.clientX / renderer.domElement.clientWidth) *  2 - 1,
+    - ((event.clientY / renderer.domElement.clientHeight) *  2 - 1),
+
+  );
+
+  raycaster.setFromCamera(coords, camera);
+
+  const intersections = raycaster.intersectObjects(scene.children, true);
+  if(intersections.length> 0)
+  {
+    // changes to random color for objects
+    const selectedObject = intersections[0].object;
+    const color = new THREE.Color(Math.random(), Math.random(), Math.random());
+    selectedObject.material.color = color;
+
+    console.log('clicked on object');
+
+  }
+
+}
