@@ -4,8 +4,35 @@ import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 
 
-//Create a Three.JS Scene
+let currentScene;
+
+//Create Three.JS Scenes
 const scene = new THREE.Scene();
+const scene1 = new THREE.Scene();
+const scene2 = new THREE.Scene();
+
+// scene we are starting at
+currentScene = scene;
+
+// func to switch scenes
+function switchScene(){
+
+  // switch first to second
+  if(currentScene === scene){
+    currentScene = scene1;
+    scene1.add(topLight);
+    //console.log("object111", object.name);
+
+  }// second to third
+  else if(currentScene === scene1){
+    currentScene = scene2;
+    scene2.add(topLight);
+  }
+  else{
+    currentScene = scene;
+  }
+}
+
 
 //create a new camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -13,8 +40,7 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 //create clock for movement
 const clock = new THREE.Clock();
 
-
-//3D objectS, global variables
+//3D objectS, global variables, change names later
 let object;
 let object2;
 let object3;
@@ -25,12 +51,15 @@ let object7;
 let object8;
 let object9;
 let object10;
+let object11;
 
 //object rendering
 let objToRender = 'star';
 
 //Instantiate a loader for the .gltf file
 const loader = new GLTFLoader();
+
+// ?? find a diff way to load all
 
 //Load the file of first stat
 loader.load(
@@ -60,6 +89,7 @@ loader.load(
     scene.add(object2);
   }
 );
+
 // third star
 loader.load(
   `./models/${objToRender}/star.gltf`,
@@ -71,6 +101,7 @@ loader.load(
     scene.add(object4);
   }
 );
+
 // fourth star
 loader.load(
   `./models/${objToRender}/star.gltf`,
@@ -82,6 +113,7 @@ loader.load(
     scene.add(object5);
   }
 );
+
 // fifth star
 loader.load(
   `./models/${objToRender}/star.gltf`,
@@ -93,6 +125,7 @@ loader.load(
     scene.add(object6);
   }
 );
+
 // sixth star
 loader.load(
   `./models/${objToRender}/star.gltf`,
@@ -103,8 +136,10 @@ loader.load(
 
     scene.add(object7);
   }
-  // senventh star
-);loader.load(
+);
+
+// senventh star
+loader.load(
   `./models/${objToRender}/star.gltf`,
   function (gltf) {
     //file loaded, add it to the scene
@@ -114,6 +149,7 @@ loader.load(
     scene.add(object8);
   }
 );
+
 // eigth star
 loader.load(
   `./models/${objToRender}/star.gltf`,
@@ -125,6 +161,7 @@ loader.load(
     scene.add(object9);
   }
 );
+
 // ninth star
 loader.load(
   `./models/${objToRender}/star.gltf`,
@@ -148,7 +185,17 @@ loader.load(
   }
 );
 
+// loaded the desktop view
+loader.load(
+  `./models/${objToRender}/desktopView.gltf`,
+  function (gltf) {
+    //file loaded, add it to the scene
+    object11 = gltf.scene;
 
+    scene1.add(object11);
+
+  }
+);
 
 
 //new renderer and set its size
@@ -177,7 +224,6 @@ function animate() {
     if(object)
     {
     object.position.x=3;
-
     object.rotation.x += delta;
     object.rotation.y += delta;
     }
@@ -197,24 +243,25 @@ function animate() {
     object3.position.set(0,0,-6);
     object3.rotation.y=5;
     }
+
     if(object4)
     {
       object4.position.set(2.2,2);
       object4.scale.set(.5,.5,.5);
-
       object4.rotation.x -= delta;
     }
+
     if(object5)
     {
       object5.position.set(-4,0,1);
       object5.rotation.x -= delta;
 
-    }if(object6)
+    }
+    if(object6)
     {
       object6.position.set(-5,2,1);
       object6.rotation.x += delta;
       object6.scale.set(.5,.5,.5);
-
     }
   
     if(object7)
@@ -224,28 +271,33 @@ function animate() {
       object7.scale.set(.2,.2,.2);
 
     }
+
 if(object8)
     {
       object8.position.set(-1,-1,3);
       object8.rotation.x -= delta;
       object8.scale.set(.2,.2,.2);
-
     }
+
 if(object9)
     {
       object9.position.set(4,-2,2);
       object9.rotation.x -= delta;
-
     }
+
 if(object10)
     {
       object10.position.set(3,1,3);
       object10.rotation.x -= delta;
-
     }
 
+    if(object11)
+    {
+      object11.position.set(0,0,-2);
+      object11.rotation.y = -1.5;
+    }
 
-  renderer.render(scene, camera);
+  renderer.render(currentScene, camera);
 }
 
 window.addEventListener("resize", function () {
@@ -258,6 +310,7 @@ window.addEventListener("resize", function () {
 //Starts rendering
 animate();
 
+
 // raycaster for click event
 const raycaster = new THREE.Raycaster();
 
@@ -269,12 +322,33 @@ function onMouseDown(event){
   const coords = new THREE.Vector2(
     (event.clientX / renderer.domElement.clientWidth) *  2 - 1,
     - ((event.clientY / renderer.domElement.clientHeight) *  2 - 1),
-
   );
 
   raycaster.setFromCamera(coords, camera);
 
+  // intersections for each object
   const intersections = raycaster.intersectObjects(scene.children, true);
+  const intersections1 = raycaster.intersectObjects(object3.children, true);
+  const intersections2 = raycaster.intersectObjects(object11.children, true);
+
+  // change to next scene when reached to folder on desktop
+if(intersections2.length> 0)
+  {    
+    document.getElementById("container3D").innerHTML = "To Be Continued..."
+
+    switchScene();
+    console.log('screen next folder');
+  }
+
+  // switch scene when the computer is clicked 
+if(intersections1.length> 0)
+  {
+    // changes to random color for objects
+    switchScene();
+    console.log('screen next');
+
+  }
+
   if(intersections.length> 0)
   {
     // changes to random color for objects
@@ -287,3 +361,4 @@ function onMouseDown(event){
   }
 
 }
+
