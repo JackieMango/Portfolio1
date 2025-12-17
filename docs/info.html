@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel = "stylesheet" href="style1.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+</head>
+<body>
+    <div class="container">
+        
+<h1>Projects</h1>   
+
+ <div class="containerButton">
+    <a href="https://github.com/JackieMango">      
+        <button style="text-decoration: none;" class="centerButton" >GitHub</button>
+    </a>
+ </div>
+
+<div class="videoCon">
+    <div class="video"> <video src="content/wwwp - Made with Clipchamp.mp4"></video></div>
+    <div class="video"> <video src="content/textArt.mp4"></video></div>
+    <div class="video"> <video src="content/gd1 - Made with Clipchamp.mp4"></video></div>
+</div>
+
+<div class="popup-video">
+    <span>&times;</span>
+    <video src="content/wwwp - Made with Clipchamp.mp4" autoplay controls></video>
+</div>
+
+<div>
+    
+<script>
+    document.querySelectorAll('.videoCon video').forEach(vid =>{
+        vid.onclick = () =>{       
+            document.querySelector('.popup-video').style.display = 'block';
+            document.querySelector('.popup-video video').src = vid.getAttribute('src');
+        }
+    });
+    document.querySelector('.popup-video span').onclick = () => {
+        document.querySelector('.popup-video').style.display = 'none';
+        }
+
+</script>
+</body>
+</html>
