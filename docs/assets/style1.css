@@ -1,0 +1,126 @@
+*{
+    margin:0 ;padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container{
+    position: relative;
+    min-height: 100vh;
+    background: rgb(33, 33, 57);
+}
+
+.container h1{
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 50px;
+    font-weight: normal;
+    padding: 100px;
+}
+
+.container .videoCon{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 10px;
+}
+
+.container .videoCon{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 150px;
+    justify-content: center;
+    padding: 10px;
+}
+
+.container .videoCon .video{
+   
+    height: 350px;
+    width: 650px;
+    border: 30px solid #000000 ;
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0.7);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.container .videoCon .video video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: .2s linear;
+}
+
+.container .videoCon .video:hover video{
+    transform: scale(1.1);
+}
+
+.container .popup-video{
+    position: fixed;
+    top: 0; left:0;
+    z-index: 100;
+    background: rgb(0, 0, 0);
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+.container .popup-video video{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    border: 10px solid #800e0e;
+    object-fit: cover;
+}
+
+.container .popup-video span{
+    position: absolute;
+    top: 20px; right: 20px;
+    font-size: 100px;
+    color: #fff;
+    font-weight: bolder;
+    z-index: 100;
+    cursor: pointer;
+}
+
+@media(max-width:768px){
+    .container .popup-video video{
+    width: 100%;
+    }
+    video{
+        width: 95%;
+    }
+}
+video{
+    height: 2000px;
+    width: 3000px;
+}
+
+.centerButton{
+    display: block;
+    margin: 0 auto;
+}
+
+button{    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(170, 198, 238);
+    height: 50px;
+    width: 100px;
+    font-size: large;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.containerButton{
+    padding-bottom: 20px;
+    text-decoration: none;
+}
+
+a:link, a:visited, a:hover, a:active
+{
+    text-decoration: none;
+}
