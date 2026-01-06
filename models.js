@@ -1,7 +1,7 @@
 //Import THREE.js library
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 
 //Create Three.JS Scenes
 const scene = new THREE.Scene();
@@ -208,9 +208,10 @@ labelRender.domElement.style.pointerEvents = 'none';
 // text, type, position 
 const p = document.createElement('p')
 p.textContent = "MY PORTFOLIO";
+p.className = 'label';
 const cPointLabel = new CSS2DObject(p);
 scene.add(cPointLabel);
-cPointLabel.position.set(0,0,0);
+cPointLabel.position.set(0,1,0);
 
 
 // Set how far the camera will be from the 3D model
@@ -359,10 +360,10 @@ animate();
 const raycaster = new THREE.Raycaster();
 
 
-document.addEventListener('mousedown', onMouseDown);
+//document.addEventListener('mousedown', onMouseDown);
 
 // what point mouse is raycast
-function onMouseDown(event){
+/*function onMouseDown(event){
 
   const mouse = new THREE.Vector2();
   mouse.x = (event.clientX / renderer.domElement.clientWidth) *  2 - 1;
@@ -409,5 +410,5 @@ function onMouseDown(event){
 
       }
     }
-}
+}*/
 
