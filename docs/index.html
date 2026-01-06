@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+
+   <!--- <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">-->
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+  <script type="module" crossorigin src="./assets/index-Bf76N80E.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CBE3FKZ8.css">
+</head>
+<body>
+
+  <!--Container for 3d objects-->
+  <div id="container3D"></div>
+
+    <div class="arrow">
+      <span></span>
+    </div>
+
+    <div>
+      <h1 style="margin: 0;">Projects</h1>
+    </div>
+
+   <div class="container">     
+
+<div class="videoCon">
+    <div class="video"> <video src="./assets/wwwp%20-%20Made%20with%20Clipchamp-BFuGa2MO.mp4"></video></div>
+    <div class="video"> <video src="./assets/textArt-bWdp6t_b.mp4"></video></div>
+    <div class="video"> <video src="./assets/gd1%20-%20Made%20with%20Clipchamp-BPjgvqa6.mp4"></video></div>
+
+  </div>
+
+<div class="popup-video">
+    <span>&times;</span>
+    <video src="./assets/wwwp%20-%20Made%20with%20Clipchamp-BFuGa2MO.mp4" autoplay controls></video>
+</div>
+    </div>
+
+    <!-- icons for social profile -->
+    <div id="social">
+      <a href="https://github.com/JackieMango">
+        <img src="./assets/githubPic-BwMFa7Wj.PNG" alt="GitHub Icon">
+
+      </a>
+      <a href="https://www.linkedin.com/in/jaquelineflores-valdivia/">
+        <img src="./assets/linkedin-ZMNkfNva.PNG" alt="linkedIn Icon" >
+      </a>
+
+    </div>
+</body>
+
+<script>
+  // allows video to be played when clicked
+    document.querySelectorAll('.videoCon video').forEach(vid =>{
+        vid.onclick = () =>{       
+            document.querySelector('.popup-video').style.display = 'block';
+            document.querySelector('.popup-video video').src = vid.getAttribute('src');
+        }
+    });
+    document.querySelector('.popup-video span').onclick = () => {
+        document.querySelector('.popup-video').style.display = 'none';
+        }
+
+</script>
+</html>
