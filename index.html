@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
  
-  
     <link rel = "stylesheet" href="style.css">
-    <!--<script src="close.js" defer></script>-->
     <script type="module" src="models.js"></script>
 
    <!--- <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">-->
@@ -18,16 +16,53 @@
   <!--Container for 3d objects-->
   <div id="container3D"></div>
 
-   <!--<div id="textIntro"></div>
-   <script>
-    const outputDiv = document.getElementById('textIntro');
-    const txt =`dlkflsk`
-    let i = 0;
-    
-    setInterval(function(){
-      outputDiv.innerHTML += txt[i];
+    <div class="arrow">
+      <span></span>
+    </div>
 
-    },50)-->
-   </script>
+    <div>
+      <h1 style="margin: 0;">Projects</h1>
+    </div>
+
+   <div class="container">     
+
+<div class="videoCon">
+    <div class="video"> <video src="content/wwwp - Made with Clipchamp.mp4"></video></div>
+    <div class="video"> <video src="content/textArt.mp4"></video></div>
+    <div class="video"> <video src="content/gd1 - Made with Clipchamp.mp4"></video></div>
+
+  </div>
+
+<div class="popup-video">
+    <span>&times;</span>
+    <video src="content/wwwp - Made with Clipchamp.mp4" autoplay controls></video>
+</div>
+    </div>
+
+    <!-- icons for social profile -->
+    <div id="social">
+      <a href="https://github.com/JackieMango">
+        <img src="content/githubPic.PNG" alt="GitHub Icon">
+
+      </a>
+      <a href="https://www.linkedin.com/in/jaquelineflores-valdivia/">
+        <img src="content/linkedin.PNG" alt="linkedIn Icon" >
+      </a>
+
+    </div>
 </body>
+
+<script>
+  // allows video to be played when clicked
+    document.querySelectorAll('.videoCon video').forEach(vid =>{
+        vid.onclick = () =>{       
+            document.querySelector('.popup-video').style.display = 'block';
+            document.querySelector('.popup-video video').src = vid.getAttribute('src');
+        }
+    });
+    document.querySelector('.popup-video span').onclick = () => {
+        document.querySelector('.popup-video').style.display = 'none';
+        }
+
+</script>
 </html>
